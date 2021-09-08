@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/John-Hauff/smart-bird-feeder-api#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "express": "^4.17.1",
     "mongoose": "^6.0.5"
   },
