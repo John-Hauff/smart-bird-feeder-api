@@ -12,12 +12,12 @@ router.post("/signup", (req, res) => {
   let { name, email, password, dateOfBirth } = req.body;
   // Trim off whitespace
   name = name.trim();
-  email = email.trim();
+  email = email.trim().toLowerCase();
   password = password.trim();
   dateOfBirth = dateOfBirth.trim();
 
   // Chekc for empty fields
-  if (name === "" || email === "" || password === "" || dateOfBirth === "") {
+  if (name == "" || email == "" || password == "" || dateOfBirth == "") {
     res.json({
       status: "FAILED",
       message: "Empty input field(s)",
@@ -109,7 +109,7 @@ router.post("/signin", (req, res) => {
   password = password.trim();
 
   // Check for empty fields
-  if (email === "" || password === "") {
+  if (email == "" || password == "") {
     res.json({
       status: "FAILED",
       message: "Empty credentials given",
