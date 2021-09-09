@@ -105,7 +105,7 @@ router.post("/signin", (req, res) => {
   // Get input from request body
   let { email, password } = req.body;
   // Trim off whitespace
-  email = email.trim();
+  email = email.trim().toLowerCase();
   password = password.trim();
 
   // Check for empty fields
