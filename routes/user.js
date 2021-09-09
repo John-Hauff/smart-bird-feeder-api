@@ -16,6 +16,7 @@ router.post("/signup", (req, res) => {
   password = password.trim();
   dateOfBirth = dateOfBirth.trim();
 
+  // Chekc for empty fields
   if (name === "" || email === "" || password === "" || dateOfBirth === "") {
     res.json({
       status: "FAILED",
@@ -100,6 +101,64 @@ router.post("/signup", (req, res) => {
 });
 
 // Sign in
-router.post("/signin", (req, res) => {});
+router.post("/signin", (req, res) => {
+  // Get input from request body
+  let { email, password } = req.body;
+  // Trim off whitespace
+  email = email.trim();
+  password = password.trim();
+
+  // Check for empty fields
+  if (email === "" || password === "") {
+    res.json({
+      status: "FAILED",
+      message: "Empty credentials given",
+    });
+  } else {
+    // Check if user exists
+    user
+      .find({ email })
+      .then((data) => {
+        if (data.length > 0) {
+          // User found
+          const hashedPassword = data[0].password;
+          bcrypt
+            .compare(password, hashedPassword)
+            .then((result) => {
+              if (result) {
+                // Password match
+                res.json({
+                  status: "SUCCESS",
+                  message: "Sign in successful",
+                  data: data,
+                });
+              } else {
+                res.json({
+                  status: "FAILED",
+                  message: "Invalid password entered",
+                });
+              }
+            })
+            .catch((err) => {
+              res.json({
+                status: "FAILED",
+                message: "An error occured while validating password",
+              });
+            });
+        } else {
+          res.json({
+            status: "FAILED",
+            message: "Invalid credentials",
+          });
+        }
+      })
+      .catch((err) => {
+        res.json({
+          status: "FAILED",
+          message: "An error occurred while checking for existing user",
+        });
+      });
+  }
+});
 
 module.exports = router;
