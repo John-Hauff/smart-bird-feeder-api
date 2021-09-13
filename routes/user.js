@@ -16,7 +16,7 @@ router.post("/signup", (req, res) => {
   password = password.trim();
   dateOfBirth = dateOfBirth.trim();
 
-  // Chekc for empty fields
+  // Check for empty fields
   if (name == "" || email == "" || password == "" || dateOfBirth == "") {
     res.json({
       status: "FAILED",
@@ -70,7 +70,7 @@ router.post("/signup", (req, res) => {
                 .save()
                 .then((signupResult) => {
                   res.json({
-                    status: "SUCCESSS",
+                    status: "SUCCESS",
                     message: "Signup successful",
                     data: signupResult,
                   });
