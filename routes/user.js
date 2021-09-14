@@ -28,6 +28,6 @@ router.post(
   birdMemoriesController.postBirdMemory
 );
 // Get the bird memories for a user
-// router.get("/get-bird-memory", birdMemoriesController.getBirdMemory);
+router.get("/get-bird-memory", birdMemoriesController.getBirdMemory);
 
 module.exports = router;

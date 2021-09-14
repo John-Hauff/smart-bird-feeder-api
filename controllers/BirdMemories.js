@@ -9,7 +9,17 @@ const postBirdMemory = (req, res) => {
   res.json({ message: "New image added to the db!" });
 };
 
-// TODO: fill getBirdMemory function
-const getBirdMemory = () => {};
+const getBirdMemory = (req, res) => {
+  BirdMemory.findOne({}, "img createdAt", (err, img) => {
+    if (err) {
+      res.send(err);
+    }
+    // console.log(img);
+
+    res.contentType("json");
+    // res.json(img);
+    res.send(img);
+  }).sort({ createdAt: "desc" }); // sort by time img created
+};
 
 module.exports = { postBirdMemory, getBirdMemory };
