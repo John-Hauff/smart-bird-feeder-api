@@ -8,9 +8,10 @@ const PORT = process.env.PORT || 3000;
 
 const userRouter = require("./routes/user");
 
-const bodyParser = require("express").json;
+const bodyParser = express.json;
 app.use(bodyParser());
 
+// Specify the start of the path for the user router
 app.use("/user", userRouter);
 
 app.listen(PORT, () =>

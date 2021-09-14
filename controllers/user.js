@@ -1,4 +1,3 @@
-const express = require("express");
 const user = require("../models/user");
 // password encryption module
 const bcrypt = require("bcrypt");
@@ -41,8 +40,10 @@ const signup = (req, res) => {
   } else {
     // Check for existing user using userModel
     user
-      .find({ email })
+      .find({ email }) // Find all users w/ specified email
       .then((result) => {
+        // {result} contains all users found matching the email provided,
+        // or {result} is null
         if (result.length) {
           // user exists already
           res.json({

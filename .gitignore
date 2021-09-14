@@ -13,3 +13,8 @@ web-build
 node_modules
 npm-debug.log
 yarn-error.log
+
+# Ignore local images
+bird_memory_uploads/*
+# Do not ignore .gitkeep
+!.gitkeep
