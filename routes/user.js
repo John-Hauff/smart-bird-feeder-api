@@ -5,6 +5,7 @@ const router = express.Router();
 
 const userController = require("../controllers/user");
 const birdMemoriesController = require("../controllers/BirdMemories");
+// const livestreamController = require("../controllers/Livestream");
 
 const multer = require("multer");
 
@@ -29,5 +30,7 @@ router.post(
 );
 // Get the bird memories for a user
 router.get("/get-bird-memory", birdMemoriesController.getBirdMemory);
+// Create livestream
+// router.post("/livestream", livestreamController.createLivestream);
 
 module.exports = router;
