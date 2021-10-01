@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const birdMemorySchema = new Schema(
   {
     // Store an image with the Buffer SchemaType
-    img: { data: Buffer, contentType: String },
+    img: { data: Buffer, contentType: String, species: String },
   },
   {
     // auto-save create & update times in db
