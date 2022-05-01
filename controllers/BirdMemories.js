@@ -15,7 +15,14 @@ const postBirdMemory = (req, res) => {
   res.json({ message: 'New image added to the db!' });
 };
 
-const removeBirdMemory = (req, res) => {};
+const deleteBirdMemory = (req) => {
+  console.log('req = ', req);
+
+  BirdMemory.findOneAndDelete({ _id: req._id }, (err, doc) => {
+    if (err) console.log(err);
+    else console.log('Successfully deleted: ', doc);
+  });
+};
 
 const getBirdMemory = (req, res) => {
   BirdMemory.find({}, 'img createdAt', (err, images) => {
@@ -34,4 +41,4 @@ const getBirdMemory = (req, res) => {
   }).sort({ createdAt: 'desc' }); // sort by time img created
 };
 
-module.exports = { postBirdMemory, getBirdMemory };
+module.exports = { postBirdMemory, deleteBirdMemory, getBirdMemory };

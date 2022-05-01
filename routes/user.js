@@ -27,6 +27,8 @@ router.post(
   upload.single('file'),
   birdMemoriesController.postBirdMemory
 );
+// Route for deleting a bird memory
+router.post('/delete-bird-memory', birdMemoriesController.deleteBirdMemory);
 // Get the bird memories for a user
 router.get('/get-bird-memory', birdMemoriesController.getBirdMemory);
 
