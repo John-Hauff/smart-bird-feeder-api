@@ -8,7 +8,10 @@ const postBirdMemory = (req, res) => {
   new_img.img.contentType = 'image/jpeg';
   new_img.img.species = req.file.originalname;
   // TODO: deal with avoiding saving images to API project folder
-  new_img.save();
+  new_img.save((err) => {
+    if (err) console.log(err);
+    // document is saved if no errors
+  });
   res.json({ message: 'New image added to the db!' });
 };
 
