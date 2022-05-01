@@ -15,13 +15,22 @@ const postBirdMemory = (req, res) => {
   res.json({ message: 'New image added to the db!' });
 };
 
-const deleteBirdMemory = (req) => {
-  console.log('req = ', req);
+const deleteBirdMemory = (req, res) => {
+  // console.log('req = ', req);
+  console.log('req.createdAt = ', req.createdAt);
 
-  BirdMemory.findOneAndDelete({ _id: req._id }, (err, doc) => {
+  BirdMemory.findOneAndDelete({ createdAt: req.body.createdAt }, (err, doc) => {
     if (err) console.log(err);
-    else console.log('Successfully deleted: ', doc);
+    else if (doc == null)
+      console.log(
+        'MongoDB document with createdAt: ' + req.body.createdAt + ' not found.'
+      );
+    else
+      console.log('Successfully deleted mongoDB document with _id: ', doc._id);
   });
+
+  // Send response back to the requester as a JSON body
+  res.json();
 };
 
 const getBirdMemory = (req, res) => {
