@@ -32,9 +32,4 @@ router.post('/delete-bird-memory', birdMemoriesController.deleteBirdMemory);
 // Get the bird memories for a user
 router.get('/get-bird-memory', birdMemoriesController.getBirdMemory);
 
-router.post(
-  '/post-bird-memory-notification',
-  birdMemoriesController.postNotification
-);
-
 module.exports = router;
