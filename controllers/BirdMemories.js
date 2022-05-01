@@ -33,7 +33,7 @@ const deleteBirdMemory = (req, res) => {
   res.json();
 };
 
-const getBirdMemory = (req, res) => {
+const getBirdMemory = (_req, res) => {
   BirdMemory.find({}, 'img createdAt', (err, images) => {
     if (err) {
       res.send(err);
