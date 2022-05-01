@@ -1,19 +1,21 @@
-const BirdMemory = require("../models/BirdMemory");
-const fs = require("fs");
+const BirdMemory = require('../models/BirdMemory');
+const fs = require('fs');
 
 const postBirdMemory = (req, res) => {
   let new_img = new BirdMemory();
   console.log(req.file);
   new_img.img.data = fs.readFileSync(req.file.path);
-  new_img.img.contentType = "image/jpeg";
+  new_img.img.contentType = 'image/jpeg';
   new_img.img.species = req.file.originalname;
   // TODO: deal with avoiding saving images to API project folder
   new_img.save();
-  res.json({ message: "New image added to the db!" });
+  res.json({ message: 'New image added to the db!' });
 };
 
+const removeBirdMemory = (req, res) => {};
+
 const getBirdMemory = (req, res) => {
-  BirdMemory.find({}, "img createdAt", (err, images) => {
+  BirdMemory.find({}, 'img createdAt', (err, images) => {
     if (err) {
       res.send(err);
     }
@@ -26,7 +28,7 @@ const getBirdMemory = (req, res) => {
     });
 
     res.json(birdMemoriesMap);
-  }).sort({ createdAt: "desc" }); // sort by time img created
+  }).sort({ createdAt: 'desc' }); // sort by time img created
 };
 
 module.exports = { postBirdMemory, getBirdMemory };

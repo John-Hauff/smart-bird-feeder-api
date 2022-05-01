@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Schema for a bird image in the db
@@ -13,4 +13,4 @@ const birdMemorySchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("BirdMemory", birdMemorySchema);
+module.exports = mongoose.model('BirdMemory', birdMemorySchema);

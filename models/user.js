@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Schema for a user stored in the db
@@ -9,6 +9,6 @@ const userSchema = new Schema({
   dateOfBirth: Date,
 });
 
-const user = mongoose.model("user", userSchema);
+const user = mongoose.model('user', userSchema);
 
 module.exports = user;
